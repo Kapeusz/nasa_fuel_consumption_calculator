@@ -9,8 +9,8 @@ defmodule NasaFuelConsumptionCalculator.FuelRequirementsCalculator do
   @doc """
     calculate_consumption/3
     Used to calculate basic fuel requirements using formulas
-    land: mass * gravity * 0.033 - 42
-    launch: mass * gravity * 0.042 - 33
+    land: ship_weight * gravity * 0.033 - 42
+    launch: ship_weight * gravity * 0.042 - 33
 
     ## Examples
     iex> NasaFuelConsumptionCalculator.FuelRequirementsCalculator.calculate_consumption(:land, 28801, 9.807)
@@ -18,9 +18,9 @@ defmodule NasaFuelConsumptionCalculator.FuelRequirementsCalculator do
   """
 
   @spec calculate_consumption(atom, integer, float) :: float
-  def calculate_consumption(directive, mass, gravity) do
+  def calculate_consumption(directive, ship_weight, gravity) do
     mode = find_mode(directive)
-    fuel = mass * gravity * mode.arg1 - mode.arg2
+    fuel = ship_weight * gravity * mode.arg1 - mode.arg2
     floor(fuel)
   end
 
@@ -34,10 +34,10 @@ defmodule NasaFuelConsumptionCalculator.FuelRequirementsCalculator do
   """
 
   @spec fuel_for_journey(atom, integer, float) :: float
-  def fuel_for_journey(directive, mass, gravity) do
-    fuel_required = calculate_consumption(directive, mass, gravity)
+  def fuel_for_journey(directive, ship_weight, gravity) do
+    fuel_required = calculate_consumption(directive, ship_weight, gravity)
 
-    if fuel_required <= 0, do: 0, else: fuel_for_journey(directive, fuel_required, gravity)
+    if fuel_required <= 0, do: 0, else: fuel_required + fuel_for_journey(directive, fuel_required, gravity)
   end
 
     @doc """

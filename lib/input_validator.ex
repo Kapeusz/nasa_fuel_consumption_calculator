@@ -22,7 +22,7 @@ defmodule NasaFuelConsumptionCalculator.InputValidator do
   """
 
   @spec validate_inputs(integer, list(tuple)) :: tuple
-  def validate_inputs(ship_weight, _paths) when not is_integer(ship_weight) or ship_weight <= 0 do
+  def validate_inputs(ship_weight, _directives) when not is_integer(ship_weight) or ship_weight <= 0 do
     {:error, "Invalid ship weight. Weight must be an integer."}
   end
 
