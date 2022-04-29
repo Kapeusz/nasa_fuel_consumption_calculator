@@ -1,22 +1,35 @@
-# NasaFuelConsumptionCalculator
+# TellerSandboxApi
 
-**TODO: Add description**
 
-## Installation
+### Implemented features
+ - All necessary routes are working
+ - User can get information about their account, account details, balance and transactions
+ - User can get details about each transaction
+ - User can get information about all their accounts
+ - User can see information about request (accounts/transactions)
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `nasa_fuel_consumption_calculator` to your list of dependencies in `mix.exs`:
 
-```elixir
-def deps do
-  [
-    {:nasa_fuel_consumption_calculator, "~> 0.1.0"}
-  ]
-end
-```
+## Tech
+- Elixir 1.13.4 (compiled with Erlang/OTP 24)
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/nasa_fuel_consumption_calculator>.
+## How to start the application
 
-# nasa_fuel_consumption_calculator
+<pre>
+  git clone https://github.com/Kapeusz/nasa_fuel_consumption_calculator.git
+  cd nasa_fuel_consumption_calculator
+  mix compile
+  iex -S mix
+ </pre>
+  
+  ## Making a request
+  #### Example for two way trip
+ ```iex> NasaFuelConsumptionCalculator.calculate(28801, [{:launch, 9.807}, {:land, 1.62}, {:launch, 1.62}, {:land, 9.807}])```
+  
+  #### Example for a trip from Earth to Moon, then from Moon to Mars and back to Earth
+  ```iex> NasaFuelConsumptionCalculator.calculate(75432, [{:launch, 9.807}, {:land, 1.62}, {:launch, 1.62}, {:land, 3.711}, {:launch, 3.711}, {:land, 9.807}])```
+
+   ## Testing
+   
+   run ```mix test```
+   
+   
