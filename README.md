@@ -1,14 +1,5 @@
 # NASAFuelConsumptionCalculator
 
-
-### Implemented features
- - All necessary routes are working
- - User can get information about their account, account details, balance and transactions
- - User can get details about each transaction
- - User can get information about all their accounts
- - User can see information about request (accounts/transactions)
-
-
 ## Tech
 - Elixir 1.13.4 (compiled with Erlang/OTP 24)
 
