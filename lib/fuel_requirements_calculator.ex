@@ -5,7 +5,6 @@ defmodule NasaFuelConsumptionCalculator.FuelRequirementsCalculator do
     Documentation for `FuelRequirementsCalculator`.
   """
 
-
   @doc """
     calculate_consumption/3
     Used to calculate basic fuel requirements using formulas
@@ -24,7 +23,7 @@ defmodule NasaFuelConsumptionCalculator.FuelRequirementsCalculator do
     floor(fuel)
   end
 
-   @doc """
+  @doc """
     fuel_for_trip/3
     Used to calculate fuel requirements for a round trip, (i.e) extra fuel required as reserve
 
@@ -37,10 +36,12 @@ defmodule NasaFuelConsumptionCalculator.FuelRequirementsCalculator do
   def fuel_for_journey(directive, ship_weight, gravity) do
     fuel_required = calculate_consumption(directive, ship_weight, gravity)
 
-    if fuel_required <= 0, do: 0, else: fuel_required + fuel_for_journey(directive, fuel_required, gravity)
+    if fuel_required <= 0,
+      do: 0,
+      else: fuel_required + fuel_for_journey(directive, fuel_required, gravity)
   end
 
-    @doc """
+  @doc """
       get_gravity/1
       Used to get gravity value using keyword
 

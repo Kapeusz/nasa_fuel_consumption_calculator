@@ -1,6 +1,7 @@
 defmodule NasaFuelConsumptionCalculator do
   import NasaFuelConsumptionCalculator.FuelRequirementsCalculator
   import NasaFuelConsumptionCalculator.InputValidator
+
   @moduledoc """
   Documentation for `NasaFuelConsumptionCalculator`.
   """
@@ -21,7 +22,7 @@ defmodule NasaFuelConsumptionCalculator do
     |> evaluate(ship_weight)
   end
 
-    @doc """
+  @doc """
     Calculate/3
 
     used to calculate fuel required to perform single step, i.e land or launch
@@ -38,8 +39,12 @@ defmodule NasaFuelConsumptionCalculator do
   end
 
   @spec evaluate(tuple, integer) :: integer | String.t()
-  defp evaluate({:error, message}, _ship_weight), do: message <> "Try: NasaFuelConsumptionCalculator.calculate(28801, :land, :earth) \n " <>
-  "or: NasaFuelConsumptionCalculator.calculate(28801, [{:launch, 9.807}, {:land, 1.62}, {:launch, 1.62}, {:land, 9.807}])"
+  defp evaluate({:error, message}, _ship_weight),
+    do:
+      message <>
+        "Try: NasaFuelConsumptionCalculator.calculate(28801, :land, :earth) \n " <>
+        "or: NasaFuelConsumptionCalculator.calculate(28801, [{:launch, 9.807}, {:land, 1.62}, {:launch, 1.62}, {:land, 9.807}])"
+
   defp evaluate({:ok, []}, _ship_weight), do: 0
 
   defp evaluate({:ok, directives}, ship_weight) do

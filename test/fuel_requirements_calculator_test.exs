@@ -7,7 +7,14 @@ defmodule NasaFuelConsumptionCalculator.FuelRequirementsCalculatorTest do
     ship_weight = 28801
     gravity = 9.807
     directive = :land
-    output = NasaFuelConsumptionCalculator.FuelRequirementsCalculator.calculate_consumption(directive, ship_weight, gravity)
+
+    output =
+      NasaFuelConsumptionCalculator.FuelRequirementsCalculator.calculate_consumption(
+        directive,
+        ship_weight,
+        gravity
+      )
+
     assert output == 9278
   end
 
@@ -15,7 +22,14 @@ defmodule NasaFuelConsumptionCalculator.FuelRequirementsCalculatorTest do
     ship_weight = 28801
     gravity = 9.807
     directive = :land
-    output = NasaFuelConsumptionCalculator.FuelRequirementsCalculator.fuel_for_journey(directive, ship_weight, gravity)
+
+    output =
+      NasaFuelConsumptionCalculator.FuelRequirementsCalculator.fuel_for_journey(
+        directive,
+        ship_weight,
+        gravity
+      )
+
     assert output == 13447
   end
 end

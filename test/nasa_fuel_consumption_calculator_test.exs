@@ -10,14 +10,18 @@ defmodule NasaFuelConsumptionCalculatorTest do
     equipment_weight = 14606
     expected_fuel_weight = 33388
     coordinates = [{:launch, 9.807}, {:land, 3.711}, {:launch, 3.711}, {:land, 9.807}]
-    assert NasaFuelConsumptionCalculator.calculate(equipment_weight, coordinates) == expected_fuel_weight
+
+    assert NasaFuelConsumptionCalculator.calculate(equipment_weight, coordinates) ==
+             expected_fuel_weight
   end
 
   test "calculate fuel for trip: Earth to Moon, Moon to Earth" do
     equipment_weight = 28801
     expected_fuel_weight = 51898
     coordinates = [{:launch, 9.807}, {:land, 1.62}, {:launch, 1.62}, {:land, 9.807}]
-    assert NasaFuelConsumptionCalculator.calculate(equipment_weight, coordinates) == expected_fuel_weight
+
+    assert NasaFuelConsumptionCalculator.calculate(equipment_weight, coordinates) ==
+             expected_fuel_weight
   end
 
   test "calculate fuel for trip: Earth -> Moon -> Mars -> Earth" do
@@ -33,7 +37,8 @@ defmodule NasaFuelConsumptionCalculatorTest do
       {:land, 9.807}
     ]
 
-    assert NasaFuelConsumptionCalculator.calculate(equipment_weight, coordinates) == expected_fuel_weight
+    assert NasaFuelConsumptionCalculator.calculate(equipment_weight, coordinates) ==
+             expected_fuel_weight
   end
 
   test "calculate fuel for trip using label: Earth -> Moon -> Mars -> Earth" do
@@ -49,7 +54,8 @@ defmodule NasaFuelConsumptionCalculatorTest do
       {:land, :earth}
     ]
 
-    assert NasaFuelConsumptionCalculator.calculate(equipment_weight, coordinates) == expected_fuel_weight
+    assert NasaFuelConsumptionCalculator.calculate(equipment_weight, coordinates) ==
+             expected_fuel_weight
   end
 
   test "calculate fuel for trip with error: Earth to Moon, Moon to Earth" do
