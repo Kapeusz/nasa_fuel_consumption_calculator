@@ -30,7 +30,7 @@ defmodule NasaFuelConsumptionCalculator.FuelRequirementsCalculator do
 
     ## Examples
     iex> NasaFuelConsumptionCalculator.FuelRequirementsCalculator.fuel_for_journey(:land, 28801, 9.807)
-    0
+    13447
   """
 
   @spec fuel_for_journey(atom, integer, float) :: float

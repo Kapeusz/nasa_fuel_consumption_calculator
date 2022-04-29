@@ -38,15 +38,15 @@ defmodule NasaFuelConsumptionCalculator do
   end
 
   @spec evaluate(tuple, integer) :: integer | String.t()
-  defp evaluate({:error, message}, _ship_weight), do: message <> " \n " <> IO.puts("Try: NasaFuelConsumptionCalculator.calculate.calculate(28801, :land, :earth) \n " <>
-    "or: NasaFuelConsumptionCalculator.calculate(28801, [{:launch, 9.807}, {:land, 1.62}, {:launch, 1.62}, {:land, 9.807}])")
+  defp evaluate({:error, message}, _ship_weight), do: message <> "Try: NasaFuelConsumptionCalculator.calculate(28801, :land, :earth) \n " <>
+  "or: NasaFuelConsumptionCalculator.calculate(28801, [{:launch, 9.807}, {:land, 1.62}, {:launch, 1.62}, {:land, 9.807}])"
   defp evaluate({:ok, []}, _ship_weight), do: 0
 
   defp evaluate({:ok, directives}, ship_weight) do
     [current_directive | next_directives] = directives
     {mode, value} = current_directive
     gravity = get_gravity(value)
-    shuttle_weight = evaluate({:ok, next_directives}, ship_weight)
-    shuttle_weight + fuel_for_journey(mode, ship_weight + shuttle_weight, gravity)
+    equipment_weight = evaluate({:ok, next_directives}, ship_weight)
+    equipment_weight + fuel_for_journey(mode, ship_weight + equipment_weight, gravity)
   end
 end

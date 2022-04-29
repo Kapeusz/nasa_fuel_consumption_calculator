@@ -7,7 +7,7 @@ defmodule NasaFuelConsumptionCalculator.InputValidator do
   """
 
   @doc """
-    validate/2
+    validate_inputs/2
 
     Used to check the input for errors
     ## Examples
